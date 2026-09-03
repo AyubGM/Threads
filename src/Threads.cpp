@@ -2,14 +2,13 @@
 #include <thread>
 #include <vector>
 #include <mutex>
+#include <atomic>
 
-std::mutex g_Mutex;
-static int g_counter = 0;
+static std::atomic<int> g_counter{0};
 
 void IncrementCounter()
 {
-	std::lock_guard<std::mutex> lock(g_Mutex);
-	g_counter = g_counter + 1;
+	g_counter++;
 }
 
 int main()
