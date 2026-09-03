@@ -1,15 +1,18 @@
 #include <iostream>
 #include <thread>
 
-void Test(int x) {
-	std::cout << "Hello from thread! x = " << x << std::endl;
-}
+
 
 
 int main()
 {
-	std::thread myThread(Test, 42);
+	auto Test = [](int x) {
+		std::cout << "Hello from thread! x = " << x << "\n";
+		};
+	std::thread myThread(Test, 1);
+
 
     std::cout << "Hello main!\n";
     myThread.join();
+
 }
