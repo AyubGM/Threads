@@ -10,16 +10,13 @@ int main()
 		};
 
 
-	std::vector<std::thread> threads;
+	std::vector<std::jthread> threads;
 
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < 1000; ++i) {
 		threads.emplace_back(Test, i + 1);
 	}
 
     std::cout << "Hello main!\n";
 
-	for (auto& t : threads) {
-		t.join();
-	}
 
 }
