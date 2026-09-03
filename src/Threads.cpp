@@ -8,9 +8,8 @@ static int g_counter = 0;
 
 void IncrementCounter()
 {
-	g_Mutex.lock();
+	std::lock_guard<std::mutex> lock(g_Mutex);
 	g_counter = g_counter + 1;
-  g_Mutex.unlock();
 }
 
 int main()
